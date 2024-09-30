@@ -12,6 +12,7 @@
 </head>
 <body>
 <%@include file="Component/navbar.jsp"%>
+<br>
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -87,6 +88,59 @@
         </div>
     </div>
 </div>
+
+<hr>
+
+<div class="container p-2">
+    <p class="text-center fs-2 ">Our Team</p>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card paint-card">
+                <div class="card-body text-center">
+                    <img src="images/img5.jpg" width="250px" height="300px">
+                    <p class="fw-bold fs-5">Samuani Simi</p>
+                    <p class="fs-7">(CEO & Chairman)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card paint-card">
+                <div class="card-body text-center">
+                    <img src="images/img6.jpg" width="250px" height="300px">
+                    <p class="fw-bold fs-5">Dr. Dong Lee</p>
+                    <p class="fs-7">(Chief Doctor)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card paint-card">
+                <div class="card-body text-center">
+                    <img src="images/img7.jpg" width="250px" height="300px">
+                    <p class="fw-bold fs-5">Dr. Nikitha Sitharaman</p>
+                    <p class="fs-7">(Chief Doctor)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card paint-card">
+                <div class="card-body text-center">
+                    <img src="images/img8.jpg" width="250px" height="300px">
+                    <p class="fw-bold fs-5">Dr. Mathue Samuel</p>
+                    <p class="fs-7">(Chief Doctor)</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<br>
+<%@include file="Component/footer.jsp"%>
+
 
 </body>
 </html>
