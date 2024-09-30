@@ -9,8 +9,71 @@
 <html>
 <head>
     <title>SignUp</title>
+    <%@include file="Component/allcss.jsp"%>
+    <style>
+        .paint-card{
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <script>
+        function validatePassword() {
+            var password = document.getElementsByName("password")[0].value;
+            var confirmPassword = document.getElementsByName("confirmPassword")[0].value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
+<%@include file="Component/navbar.jsp"%>
 
+<div class="container p-5">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card paint-card">
+                <div class="card-body">
+                    <p class="fs-4 text-center">User Registration</p>
+
+                    <form action="Registration" method="post" onsubmit="return validatePassword()">
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input required name="fullname" type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Select Role</label>
+                            <select required name="role" class="form-select">
+                                <option value="" disabled selected>Select your role</option>
+                                <option value="patient">Patient</option>
+                                <option value="doctor">Doctor</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email address</label>
+                            <input required name="email" type="email" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input required name="password" type="password" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Confirm Password</label>
+                            <input required name="confirmPassword" type="password" class="form-control">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn bg-success text-white col-md-12">Register</button>
+                    </form>
+                    Already have an account?, <a href="index.jsp" class="clink text-decoration-none">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%@include file="Component/footer.jsp"%>
 </body>
 </html>
