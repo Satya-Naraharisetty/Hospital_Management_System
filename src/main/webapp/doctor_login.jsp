@@ -12,6 +12,6 @@
     <%@include file="Component/allcss.jsp"%>
 </head>
 <body>
-
+<%@include file="Component/navbar.jsp"%>
 </body>
 </html>
