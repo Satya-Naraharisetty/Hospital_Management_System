@@ -21,7 +21,7 @@ public class AddDoctor extends HttpServlet {
             String DOB = req.getParameter("DOB");
             String Qualification = req.getParameter("Qualification");
 
-            String Speciality = req.getParameter("Specialist");
+            String Speciality = req.getParameter("Speciality");
 
             String Email = req.getParameter("Email");
             String Mobile_No = req.getParameter("Mobile_No");
