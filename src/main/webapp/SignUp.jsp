@@ -17,8 +17,8 @@
     </style>
     <script>
         function validatePassword() {
-            var password = document.getElementsByName("password")[0].value;
-            var confirmPassword = document.getElementsByName("confirmPassword")[0].value;
+            let password = document.getElementsByName("password")[0].value;
+            let confirmPassword = document.getElementsByName("confirmPassword")[0].value;
 
             if (password !== confirmPassword) {
                 alert("Passwords do not match!");
@@ -36,7 +36,13 @@
         <div class="col-md-4 offset-md-4">
             <div class="card paint-card">
                 <div class="card-body">
-                    <p class="fs-4 text-center">User Registration</p>
+                    <p class="fs-4 text-center">Register</p>
+                    <% String errorMessage = (String) request.getAttribute("errorMessage"); %>
+                    <% if (errorMessage != null) { %>
+                    <div class="alert alert-danger">
+                        <%= errorMessage %>
+                    </div>
+                    <% } %>
 
                     <form action="./Registration" method="post" onsubmit="return validatePassword()">
                         <div class="mb-3">
@@ -45,7 +51,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Select Role</label>
-                            <select required name="role" class="form-select">
+                            <select required name="Role" class="form-select">
                                 <option value="" disabled selected>Select your role</option>
                                 <option value="patient">Patient</option>
                                 <option value="doctor">Doctor</option>
