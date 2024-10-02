@@ -21,27 +21,35 @@ public class Registration extends HttpServlet {
             UserDao dao = new UserDao(DBConnection.getDBConnection());
             if (dao.isEmailExists(Email)) {
                 request.setAttribute("User already exists", "Email already exists, Please login or use a different account!"); // Set the error message
-                RequestDispatcher rd = request.getRequestDispatcher("SignUp.jsp");
-                rd.forward(request, response);
+                request.getRequestDispatcher("SignUp.jsp").forward(request, response);
                 return;
             }
 
             // Check if passwords match
 
             if (!Password.equals(confirmPassword)) {
-                request.setAttribute("errorMessage1", "Passwords do not match!");
+                request.setAttribute("Password Mismatch", "Passwords do not match!");
                 request.getRequestDispatcher("SignUp.jsp").forward(request, response);
                 return;
             }
 
             // Proceed with registration if passwords match
+
+//            HttpSession session = request.getSession();
             boolean flag = dao.UserRegister(userData);
 
             if (flag) {
                 System.out.println("Data Insertion/Registration Successful");
+//                session.setAttribute("successMessage", "Registration successful! Please login.");
+//                response.sendRedirect("login.jsp");
+                // After successful registration
+                request.setAttribute("successMessage", "Registration successful! Please login.");
+                request.getRequestDispatcher("SignUp.jsp").forward(request, response);
 //                response.sendRedirect("login.jsp"); // Redirect to login page after success
             } else {
                 System.out.println("Data Insertion/Registration Failed");
+//                session.setAttribute("FM", "Registration Failed");
+//                session.setAttribute("errorMessage", "Email already exists.");
                 request.setAttribute("errorMessage", "Registration failed! Please try again.");
                 request.getRequestDispatcher("SignUp.jsp").forward(request, response);
             }

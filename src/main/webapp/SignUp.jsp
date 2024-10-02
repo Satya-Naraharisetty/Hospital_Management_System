@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <html>
 <head>
     <title>SignUp</title>
@@ -45,10 +46,17 @@
                     </div>
                     <% } %>
 
-                    <% String errorMessage1 = (String) request.getAttribute("errorMessage"); %>
+                    <% String errorMessage1 = (String) request.getAttribute("Password Mismatch"); %>
                     <% if (errorMessage1 != null) { %>
                     <div class="alert alert-danger">
                         <%= errorMessage1 %>
+                    </div>
+                    <% } %>
+
+                    <% String successMessage = (String) request.getAttribute("successMessage"); %>
+                    <% if (successMessage != null) { %>
+                    <div class="alert alert-success">
+                        <%= successMessage %>
                     </div>
                     <% } %>
 
