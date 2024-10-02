@@ -1,3 +1,5 @@
+<%@ page import="com.hms.DBConnection" %>
+<%@ page import="java.sql.*" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -12,7 +14,13 @@
 </head>
 <body>
 <%@include file="Component/navbar.jsp"%>
-<br>
+<% try {
+    Connection conn = DBConnection.getDBConnection();
+} catch (SQLException e) {
+    e.printStackTrace();
+} %>
+
+        <br>
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -21,13 +29,13 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="images/img1.jpg" class="d-block w-100" alt="...">
+            <img src="images/img1.jpg" class="d-block w-100" alt="Pic 1">
         </div>
         <div class="carousel-item">
-            <img src="images/img2.jpg" class="d-block w-100" alt="...">
+            <img src="images/img2.jpg" class="d-block w-100" alt="Pic 2">
         </div>
         <div class="carousel-item">
-            <img src="images/img3.jpg" class="d-block w-100" alt="...">
+            <img src="images/img3.jpg" class="d-block w-100" alt="Pic 3">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
