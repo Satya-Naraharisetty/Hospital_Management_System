@@ -5,7 +5,8 @@
   Time: 5:06 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@page import="com.hms.*"%>
+<%@page import="com.hms.dao.DoctorDao"%>
+<%@ page import="com.hms.DBConnection" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -37,7 +38,7 @@
         <c:remove var="succMsg" scope="session" />
     </c:if>
     <%
-        DoctorDao dao = new DoctorDao(DBConnect.getConn());
+        DoctorDao dao = new DoctorDao(DBConnection.getDBConnection());
     %>
     <div class="row">
         <div class="col-md-4">

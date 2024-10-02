@@ -39,7 +39,7 @@
                         <div class="fs-3 text-center text-success" role="alert">${succMsg}</div>
                         <c:remove var="succMsg" scope="session"/>
                     </c:if>
-                    <form action="../addDoctor" method="post">
+                    <form action="./addDoctor" method="post">
                         <div class="mb-3">
                             <label class="form-label">Full Name</label> <input type="text"
                                                                                required name="Full_Name"

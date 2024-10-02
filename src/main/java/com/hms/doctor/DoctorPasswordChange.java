@@ -1,9 +1,11 @@
 package com.hms.doctor;
 
+import com.hms.DBConnection;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import com.hms.dao.DoctorDao;
 
@@ -16,7 +18,12 @@ public class DoctorPasswordChange extends HttpServlet {
         String oldPassword = req.getParameter("oldPassword");
         String newPassword = req.getParameter("newPassword");
 
-        DoctorDao dao = new DoctorDao(DBConnect.getConn());
+        DoctorDao dao = null;
+        try {
+            dao = new DoctorDao(DBConnection.getDBConnection());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         HttpSession session = req.getSession();
 
         if (dao.checkOldPassword(uid, oldPassword)) {

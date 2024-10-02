@@ -5,6 +5,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/userChangePassword")
 public class changePassword extends HttpServlet {
@@ -16,7 +17,12 @@ public class changePassword extends HttpServlet {
         String oldPassword = req.getParameter("oldPassword");
         String newPassword = req.getParameter("newPassword");
 
-        UserDao dao = new UserDao(DBConnection.getDBConnection());
+        UserDao dao = null;
+        try {
+            dao = new UserDao(DBConnection.getDBConnection());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         HttpSession session = req.getSession();
 
         if (dao.checkOldPassword(uid, oldPassword)) {

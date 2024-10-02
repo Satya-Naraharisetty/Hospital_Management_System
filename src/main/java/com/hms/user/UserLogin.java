@@ -14,8 +14,8 @@ public class UserLogin extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
+        String email = req.getParameter("Email");
+        String password = req.getParameter("Password");
 
         HttpSession session = req.getSession();
 
@@ -28,10 +28,10 @@ public class UserLogin extends HttpServlet {
         User user = dao.login(email, password);
 
         if (user != null) {
-            session.setAttribute("userObj", user);
+            session.setAttribute("UserObj", user);
             resp.sendRedirect("index.jsp");
         } else {
-            session.setAttribute("errorMsg", "invalid email & password");
+            session.setAttribute("errorMsg", "Invalid Email & Password");
             resp.sendRedirect("user_login.jsp");
         }
 

@@ -1,133 +1,130 @@
 package com.hms.entity;
 
 public class Appointment {
-    private int id;
-    private int userId;
-    private String fullName;
-    private String gender;
-    private String age;
-    private String appointDate;
-    private String email;
-    private String phNo;
-    private String diseases;
-    private int doctorId;
-    private String address;
-    private String status;
+    private int Id;
+    private int UserId;
+    private String Full_Name;
+    private String Gender;
+    private String Age;
+    private String appoint_date;
+    private String Email;
+    private String PhNo;
+    private String Disease;
+    private int Doctor_Id;
+    private String Address;
+    private String Status;
 
     public Appointment() {
         super();
     }
 
-    public Appointment(int userId, String fullName, String gender, String age, String appoinDate, String email,
-                       String phNo, String diseases, int doctorId, String address, String status) {
-        super();
-        this.userId = userId;
-        this.fullName = fullName;
-        this.gender = gender;
-        this.age = age;
-        this.appointDate = appoinDate;
-        this.email = email;
-        this.phNo = phNo;
-        this.diseases = diseases;
-        this.doctorId = doctorId;
-        this.address = address;
-        this.status = status;
+    public Appointment(int userId, String full_Name, String gender, String age, String appoint_date, String email, String phNo, String disease, int doctor_Id, String address, String status) {
+        this.UserId = userId;
+        this.Full_Name = full_Name;
+        this.Gender = gender;
+        this.Age = age;
+        this.appoint_date = appoint_date;
+        this.Email = email;
+        this.PhNo = phNo;
+        this.Disease = disease;
+        this.Doctor_Id = doctor_Id;
+        this.Address = address;
+        this.Status = status;
     }
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        Id = id;
     }
 
     public int getUserId() {
-        return userId;
+        return UserId;
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        UserId = userId;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFull_Name() {
+        return Full_Name;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFull_Name(String full_Name) {
+        Full_Name = full_Name;
     }
 
     public String getGender() {
-        return gender;
+        return Gender;
     }
 
     public void setGender(String gender) {
-        this.gender = gender;
+        Gender = gender;
     }
 
     public String getAge() {
-        return age;
+        return Age;
     }
 
     public void setAge(String age) {
-        this.age = age;
+        Age = age;
     }
 
-    public String getAppointDate() {
-        return appointDate;
+    public String getAppoint_date() {
+        return appoint_date;
     }
 
-    public void setAppointDate(String appointDate) {
-        this.appointDate = appointDate;
+    public void setAppoint_date(String appoint_date) {
+        this.appoint_date = appoint_date;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        Email = email;
     }
 
     public String getPhNo() {
-        return phNo;
+        return PhNo;
     }
 
     public void setPhNo(String phNo) {
-        this.phNo = phNo;
+        PhNo = phNo;
     }
 
-    public String getDiseases() {
-        return diseases;
+    public String getDisease() {
+        return Disease;
     }
 
-    public void setDiseases(String diseases) {
-        this.diseases = diseases;
+    public void setDisease(String disease) {
+        Disease = disease;
     }
 
-    public int getDoctorId() {
-        return doctorId;
+    public int getDoctor_Id() {
+        return Doctor_Id;
     }
 
-    public void setDoctorId(int doctorId) {
-        this.doctorId = doctorId;
+    public void setDoctor_Id(int doctor_Id) {
+        Doctor_Id = doctor_Id;
     }
 
     public String getAddress() {
-        return address;
+        return Address;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        Address = address;
     }
 
     public String getStatus() {
-        return status;
+        return Status;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        Status = status;
     }
-
 }

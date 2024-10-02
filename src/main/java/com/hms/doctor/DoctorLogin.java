@@ -16,8 +16,8 @@ public class DoctorLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
+        String email = req.getParameter("Email");
+        String password = req.getParameter("Password");
 
         HttpSession session = req.getSession();
 
@@ -30,10 +30,10 @@ public class DoctorLogin extends HttpServlet {
         Doctor doctor = dao.login(email, password);
 
         if (doctor != null) {
-            session.setAttribute("doctorObj", doctor);
+            session.setAttribute("DoctorObj", doctor);
             resp.sendRedirect("doctor/index.jsp");
         } else {
-            session.setAttribute("errorMsg", "invalid email & password");
+            session.setAttribute("errorMsg", "Invalid Email & Password");
             resp.sendRedirect("doctor_login.jsp");
         }
 

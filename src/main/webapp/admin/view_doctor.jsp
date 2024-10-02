@@ -5,20 +5,18 @@
   Time: 6:35 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@page import="com.entity.Doctor"%>
-<%@page import="com.dao.DoctorDao"%>
-<%@page import="com.entity.Specalist"%>
+<%@page import="com.hms.dao.*"%>
+<%@page import="com.hms.entity.*"%>
 <%@page import="java.util.List"%>
-<%@page import="com.db.DBConnect"%>
-<%@page import="com.dao.SpecialistDao"%>
+<%@page import="com.hms.DBConnection"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="ISO-8859-1">
     <title>Insert title here</title>
-    <%@include file="../component/allcss.jsp"%>
-    <style type="text/css">
+    <%@include file="../Component/allcss.jsp"%>
+    <style>
         .paint-card {
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
         }
@@ -38,9 +36,9 @@
                         <p class="fs-3 text-center text-danger">${errorMsg}</p>
                         <c:remove var="errorMsg" scope="session" />
                     </c:if>
-                    <c:if test="${not empty succMsg}">
-                        <div class="fs-3 text-center text-success" role="alert">${succMsg}</div>
-                        <c:remove var="succMsg" scope="session" />
+                    <c:if test="${not empty successMsg}">
+                        <div class="fs-3 text-center text-success" role="alert">${successMsg}</div>
+                        <c:remove var="successMsg" scope="session" />
                     </c:if>
                     <table class="table">
                         <thead>
@@ -56,12 +54,12 @@
                         </thead>
                         <tbody>
                         <%
-                            DoctorDao dao2 = new DoctorDao(DBConnect.getConn());
+                            DoctorDao dao2 = new DoctorDao(DBConnection.getDBConnection());
                             List<Doctor> list2 = dao2.getAllDoctor();
                             for (Doctor d : list2) {
                         %>
                         <tr>
-                            <td><%=d.getFullName()%></td>
+                            <td><%=d.getFull_Name()%></td>
                             <td><%=d.getDob()%></td>
                             <td><%=d.getQualification()%></td>
                             <td><%=d.getSpecialist()%></td>
@@ -77,9 +75,6 @@
                         <%
                             }
                         %>
-
-
-
                         </tbody>
                     </table>
 

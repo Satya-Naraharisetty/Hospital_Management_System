@@ -19,17 +19,17 @@ public class AppointmentDao {
 
         try {
 
-            String sql = "insert into appointment(UserId, Full_Name, Gender, Age, Appointment_Date, Email, PhNo, Diseases, Doctor_id, Address, Status) values(?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into appointment(UserId, Full_Name, Gender, Age, appoint_date, Email, PhNo, Disease, Doctor_Id, Address, Status) values(?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, ap.getUserId());
-            ps.setString(2, ap.getFullName());
+            ps.setString(2, ap.getFull_Name());
             ps.setString(3, ap.getGender());
             ps.setString(4, ap.getAge());
-            ps.setString(5, ap.getAppointDate());
+            ps.setString(5, ap.getAppoint_date());
             ps.setString(6, ap.getEmail());
             ps.setString(7, ap.getPhNo());
-            ps.setString(8, ap.getDiseases());
-            ps.setInt(9, ap.getDoctorId());
+            ps.setString(8, ap.getDisease());
+            ps.setInt(9, ap.getDoctor_Id());
             ps.setString(10, ap.getAddress());
             ps.setString(11, ap.getStatus());
 
@@ -51,7 +51,7 @@ public class AppointmentDao {
 
         try {
 
-            String sql = "select * from appointment where user_id=?";
+            String sql = "select * from appointment where UserId=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, userId);
 
@@ -60,14 +60,14 @@ public class AppointmentDao {
                 ap = new Appointment();
                 ap.setId(rs.getInt(1));
                 ap.setUserId(rs.getInt(2));
-                ap.setFullName(rs.getString(3));
+                ap.setFull_Name(rs.getString(3));
                 ap.setGender(rs.getString(4));
                 ap.setAge(rs.getString(5));
-                ap.setAppointDate(rs.getString(6));
+                ap.setAppoint_date(rs.getString(6));
                 ap.setEmail(rs.getString(7));
                 ap.setPhNo(rs.getString(8));
-                ap.setDiseases(rs.getString(9));
-                ap.setDoctorId(rs.getInt(10));
+                ap.setDisease(rs.getString(9));
+                ap.setDoctor_Id(rs.getInt(10));
                 ap.setAddress(rs.getString(11));
                 ap.setStatus(rs.getString(12));
                 list.add(ap);
@@ -86,7 +86,7 @@ public class AppointmentDao {
 
         try {
 
-            String sql = "select * from appointment where doctor_id=?";
+            String sql = "select * from appointment where Doctor_Id=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, doctorId);
 
@@ -95,14 +95,14 @@ public class AppointmentDao {
                 ap = new Appointment();
                 ap.setId(rs.getInt(1));
                 ap.setUserId(rs.getInt(2));
-                ap.setFullName(rs.getString(3));
+                ap.setFull_Name(rs.getString(3));
                 ap.setGender(rs.getString(4));
                 ap.setAge(rs.getString(5));
-                ap.setAppointDate(rs.getString(6));
+                ap.setAppoint_date(rs.getString(6));
                 ap.setEmail(rs.getString(7));
                 ap.setPhNo(rs.getString(8));
-                ap.setDiseases(rs.getString(9));
-                ap.setDoctorId(rs.getInt(10));
+                ap.setDisease(rs.getString(9));
+                ap.setDoctor_Id(rs.getInt(10));
                 ap.setAddress(rs.getString(11));
                 ap.setStatus(rs.getString(12));
                 list.add(ap);
@@ -121,7 +121,7 @@ public class AppointmentDao {
 
         try {
 
-            String sql = "select * from appointment where id=?";
+            String sql = "select * from appointment where Id=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
 
@@ -130,14 +130,14 @@ public class AppointmentDao {
                 ap = new Appointment();
                 ap.setId(rs.getInt(1));
                 ap.setUserId(rs.getInt(2));
-                ap.setFullName(rs.getString(3));
+                ap.setFull_Name(rs.getString(3));
                 ap.setGender(rs.getString(4));
                 ap.setAge(rs.getString(5));
-                ap.setAppointDate(rs.getString(6));
+                ap.setAppoint_date(rs.getString(6));
                 ap.setEmail(rs.getString(7));
                 ap.setPhNo(rs.getString(8));
-                ap.setDiseases(rs.getString(9));
-                ap.setDoctorId(rs.getInt(10));
+                ap.setDisease(rs.getString(9));
+                ap.setDoctor_Id(rs.getInt(10));
                 ap.setAddress(rs.getString(11));
                 ap.setStatus(rs.getString(12));
 
@@ -153,7 +153,7 @@ public class AppointmentDao {
     public boolean updateCommentStatus(int id, int doctId, String comm) {
         boolean f = false;
         try {
-            String sql = "update appointment set status=? where id=? and doctor_id=?";
+            String sql = "update appointment set status=? where Id=? and Doctor_Id=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, comm);
             ps.setInt(2, id);
@@ -177,7 +177,7 @@ public class AppointmentDao {
 
         try {
 
-            String sql = "select * from appointment order by id desc";
+            String sql = "select * from appointment order by Id desc";
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -185,14 +185,14 @@ public class AppointmentDao {
                 ap = new Appointment();
                 ap.setId(rs.getInt(1));
                 ap.setUserId(rs.getInt(2));
-                ap.setFullName(rs.getString(3));
+                ap.setFull_Name(rs.getString(3));
                 ap.setGender(rs.getString(4));
                 ap.setAge(rs.getString(5));
-                ap.setAppointDate(rs.getString(6));
+                ap.setAppoint_date(rs.getString(6));
                 ap.setEmail(rs.getString(7));
                 ap.setPhNo(rs.getString(8));
-                ap.setDiseases(rs.getString(9));
-                ap.setDoctorId(rs.getInt(10));
+                ap.setDisease(rs.getString(9));
+                ap.setDoctor_Id(rs.getInt(10));
                 ap.setAddress(rs.getString(11));
                 ap.setStatus(rs.getString(12));
                 list.add(ap);

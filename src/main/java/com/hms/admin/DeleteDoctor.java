@@ -1,9 +1,13 @@
-package com.admin.servlet;
+package com.hms.admin;
+
+import com.hms.DBConnection;
+import com.hms.dao.DoctorDao;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/deleteDoctor")
 public class DeleteDoctor extends HttpServlet {
@@ -13,7 +17,12 @@ public class DeleteDoctor extends HttpServlet {
 
         int id = Integer.parseInt(req.getParameter("id"));
 
-        DoctorDao dao = new DoctorDao(DBConnect.getConn());
+        DoctorDao dao = null;
+        try {
+            dao = new DoctorDao(DBConnection.getDBConnection());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         HttpSession session = req.getSession();
 
         if (dao.deleteDoctor(id)) {

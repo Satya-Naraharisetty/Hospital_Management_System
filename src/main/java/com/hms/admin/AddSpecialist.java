@@ -15,6 +15,7 @@ public class AddSpecialist extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String specName = req.getParameter("specName");
 
+//        SpecialistDao dao = new SpecialistDao(DBConnection.getDBConnection());;
         SpecialistDao dao;
         try {
             dao = new SpecialistDao(DBConnection.getDBConnection());

@@ -1,12 +1,13 @@
 package com.hms.doctor;
 
+import com.hms.DBConnection;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
 
-import com.dao.DoctorDao;
-import com.entity.Doctor;
+import com.hms.dao.DoctorDao;
+import com.hms.entity.Doctor;
 
 @WebServlet("/doctorUpdateProfile")
 public class EditProfile extends HttpServlet {
@@ -27,7 +28,7 @@ public class EditProfile extends HttpServlet {
 
             Doctor d = new Doctor(id, fullName, dob, qualification, spec, email, mobno, "");
 
-            DoctorDao dao = new DoctorDao(DBConnect.getConn());
+            DoctorDao dao = new DoctorDao(DBConnection.getDBConnection());
             HttpSession session = req.getSession();
 
             if (dao.editDoctorProfile(d)) {

@@ -5,12 +5,11 @@
   Time: 6:32 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@page import="com.entity.Doctor"%>
-<%@page import="com.dao.DoctorDao"%>
-<%@page import="com.entity.Appointment"%>
+<%@page import="com.hms.entity.Doctor"%>
+<%@page import="com.hms.dao.*"%>
+<%@page import="com.hms.entity.Appointment"%>
 <%@page import="java.util.List"%>
-<%@page import="com.db.DBConnect"%>
-<%@page import="com.dao.AppointmentDao"%>
+<%@ page import="com.hms.DBConnection" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -47,8 +46,8 @@
                 </thead>
                 <tbody>
                 <%
-                    com.dao.AppointmentDao dao = new com.dao.AppointmentDao(DBConnect.getConn());
-                    DoctorDao dao2 = new DoctorDao(DBConnect.getConn());
+                    com.hms.dao.AppointmentDao dao = new com.hms.dao.AppointmentDao(DBConnection.getDBConnection());
+                    DoctorDao dao2 = new DoctorDao(DBConnection.getDBConnection());
                     List<Appointment> list = dao.getAllAppointment();
                     for (Appointment ap : list) {
                         Doctor d = dao2.getDoctorById(ap.getDoctorId());
@@ -57,11 +56,11 @@
                     <th><%=ap.getFullName()%></th>
                     <td><%=ap.getGender()%></td>
                     <td><%=ap.getAge()%></td>
-                    <td><%=ap.getAppoinDate()%></td>
+                    <td><%=ap.getAppointDate()%></td>
                     <td><%=ap.getEmail()%></td>
                     <td><%=ap.getPhNo()%></td>
                     <td><%=ap.getDiseases()%></td>
-                    <td><%=d.getFullName()%></td>
+                    <td><%=d.getFull_Name()%></td>
                     <td><%=ap.getAddress()%></td>
                     <td><%=ap.getStatus()%></td>
                 </tr>

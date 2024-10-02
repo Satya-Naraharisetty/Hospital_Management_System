@@ -1,4 +1,8 @@
-package com.hms;
+package com.hms.admin;
+
+import com.hms.dao.DoctorDao;
+import com.hms.DBConnection;
+import com.hms.entity.Doctor;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -12,7 +16,6 @@ public class UpdateDoctor extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try {
-
             String fullName = req.getParameter("fullname");
             String dob = req.getParameter("dob");
             String qualification = req.getParameter("qualification");
@@ -23,13 +26,13 @@ public class UpdateDoctor extends HttpServlet {
 
             int id = Integer.parseInt(req.getParameter("id"));
 
-            DoctorDao d = new DoctorDao(id, fullName, dob, qualification, spec, email, mobno, password);
+            Doctor d = new Doctor(fullName, dob, qualification, spec, email, mobno, password);
 
             DoctorDao dao = new DoctorDao(DBConnection.getDBConnection());
             HttpSession session = req.getSession();
 
             if (dao.updateDoctor(d)) {
-                session.setAttribute("succMsg", "Doctor Update Sucessfully..");
+                session.setAttribute("successMsg", "Doctor Update Sucessfully..");
                 resp.sendRedirect("admin/view_doctor.jsp");
             } else {
                 session.setAttribute("errorMsg", "something wrong on server");
