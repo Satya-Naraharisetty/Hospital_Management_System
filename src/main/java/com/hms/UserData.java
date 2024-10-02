@@ -1,17 +1,19 @@
 package com.hms;
 
-public class User {
+public class UserData {
     private int Id;
     private String Full_Name;
+    private String Role;
     private String Email;
     private String Password;
 
-    public User() {
+    public UserData() {
         super();
     }
 
-    public User(String full_Name, String email, String password) {
+    public UserData(String full_Name, String role, String email, String password) {
         Full_Name = full_Name;
+        Role = role;
         Email = email;
         Password = password;
     }
@@ -30,6 +32,14 @@ public class User {
 
     public void setFull_Name(String full_Name) {
         Full_Name = full_Name;
+    }
+
+    public String getRole() {
+        return Role;
+    }
+
+    public void setRole(String role) {
+        Role = role;
     }
 
     public String getEmail() {

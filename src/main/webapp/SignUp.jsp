@@ -38,10 +38,10 @@
                 <div class="card-body">
                     <p class="fs-4 text-center">User Registration</p>
 
-                    <form action="Registration" method="post" onsubmit="return validatePassword()">
+                    <form action="./Registration" method="post" onsubmit="return validatePassword()">
                         <div class="mb-3">
                             <label class="form-label">Full Name</label>
-                            <input required name="fullname" type="text" class="form-control">
+                            <input required name="Full_Name" type="text" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Select Role</label>
@@ -54,11 +54,11 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email address</label>
-                            <input required name="email" type="email" class="form-control">
+                            <input required name="Email" type="email" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input required name="password" type="password" class="form-control">
+                            <input required name="Password" type="password" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Confirm Password</label>

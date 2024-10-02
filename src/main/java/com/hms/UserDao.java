@@ -9,17 +9,18 @@ public class UserDao {
         this.conn = conn;
     }
 
-    public boolean UserRegister(User user) {
+    public boolean UserRegister(UserData user) {
         boolean flag = false;
         try {
-            String sql = "insert into user_details(Full_Name, Email, Password) values(?, ?, ?)";
-            PreparedStatement ps = conn.prepareStatement(sql);
+            String sql = "insert into user_details(Full_Name, Role, Email, Password) values(?, ?, ?, ?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
 //            String temp = user.getFull_Name();
 //            ps.setString(1, temp);
-            ps.setString(1, user.getFull_Name());
-            ps.setString(2, user.getEmail());
-            ps.setString(3, user.getPassword());
-            int i = ps.executeUpdate();
+            pstmt.setString(1, user.getFull_Name());
+            pstmt.setString(2, user.getRole());
+            pstmt.setString(3, user.getEmail());
+            pstmt.setString(4, user.getPassword());
+            int i = pstmt.executeUpdate();
 
             if (i == 1) {
                 flag = true;
@@ -31,19 +32,19 @@ public class UserDao {
         return flag;
     }
 
-    public User login(String email, String password) {
-        User u = null;
+    public UserData login(String email, String password) {
+        UserData u = null;
 
         try {
             String sql = "select * from user_details where Email = ? and Password = ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, email);
-            ps.setString(2, password);
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            pstmt.setString(2, password);
 
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                u = new User();
+                u = new UserData();
                 u.setId(rs.getInt(1));
                 u.setFull_Name(rs.getString(2));
                 u.setEmail(rs.getString(3));
