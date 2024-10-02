@@ -37,10 +37,18 @@
             <div class="card paint-card">
                 <div class="card-body">
                     <p class="fs-4 text-center">Register</p>
-                    <% String errorMessage = (String) request.getAttribute("errorMessage"); %>
+
+                    <% String errorMessage = (String) request.getAttribute("User already exists"); %>
                     <% if (errorMessage != null) { %>
                     <div class="alert alert-danger">
                         <%= errorMessage %>
+                    </div>
+                    <% } %>
+
+                    <% String errorMessage1 = (String) request.getAttribute("errorMessage"); %>
+                    <% if (errorMessage1 != null) { %>
+                    <div class="alert alert-danger">
+                        <%= errorMessage1 %>
                     </div>
                     <% } %>
 

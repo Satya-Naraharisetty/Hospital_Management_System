@@ -16,16 +16,25 @@ public class Registration extends HttpServlet {
             String Password = request.getParameter("Password");
             String confirmPassword = request.getParameter("confirmPassword");
 
+            // Handling existing users
+            UserData userData = new UserData(Full_Name, Role, Email, Password);
+            UserDao dao = new UserDao(DBConnection.getDBConnection());
+            if (dao.isEmailExists(Email)) {
+                request.setAttribute("User already exists", "Email already exists, Please login or use a different account!"); // Set the error message
+                RequestDispatcher rd = request.getRequestDispatcher("SignUp.jsp");
+                rd.forward(request, response);
+                return;
+            }
+
             // Check if passwords match
+
             if (!Password.equals(confirmPassword)) {
-                request.setAttribute("errorMessage", "Passwords do not match!");
+                request.setAttribute("errorMessage1", "Passwords do not match!");
                 request.getRequestDispatcher("SignUp.jsp").forward(request, response);
                 return;
             }
 
             // Proceed with registration if passwords match
-            UserData userData = new UserData(Full_Name, Role, Email, Password);
-            UserDao dao = new UserDao(DBConnection.getDBConnection());
             boolean flag = dao.UserRegister(userData);
 
             if (flag) {

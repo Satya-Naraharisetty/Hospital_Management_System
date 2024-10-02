@@ -100,4 +100,22 @@ public class UserDao {
         return flag;
     }
 
+    public boolean isEmailExists(String email) {
+        boolean exists = false;
+        try {
+            String sql = "SELECT COUNT(*) FROM user_details WHERE Email = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                exists = rs.getInt(1) > 0;  // If count is greater than 0, email exists
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exists;
+    }
+
+
 }
