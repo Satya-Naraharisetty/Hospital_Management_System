@@ -71,7 +71,6 @@
                                 <option value="" disabled selected>Select your role</option>
                                 <option value="patient">Patient</option>
                                 <option value="doctor">Doctor</option>
-                                <option value="admin">Admin</option>
                             </select>
                         </div>
                         <div class="mb-3">

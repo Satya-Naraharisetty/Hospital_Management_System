@@ -1,4 +1,6 @@
-package com.hms;
+package com.hms.dao;
+
+import com.hms.entity.User;
 
 import java.sql.*;
 
@@ -9,17 +11,17 @@ public class UserDao {
         this.conn = conn;
     }
 
-    public boolean UserRegister(UserData user) {
+    public boolean UserRegister(User user) {
         boolean flag = false;
         try {
-            String sql = "insert into user_details(Full_Name, Role, Email, Password) values(?, ?, ?, ?)";
+            String sql = "insert into user_details(Full_Name, /*Role,*/ Email, Password) values(?, /*?,*/ ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
 //            String temp = user.getFull_Name();
 //            ps.setString(1, temp);
             pstmt.setString(1, user.getFull_Name());
-            pstmt.setString(2, user.getRole());
-            pstmt.setString(3, user.getEmail());
-            pstmt.setString(4, user.getPassword());
+//            pstmt.setString(2, user.getRole());
+            pstmt.setString(2, user.getEmail());
+            pstmt.setString(3, user.getPassword());
             int i = pstmt.executeUpdate();
 
             if (i == 1) {
@@ -32,8 +34,8 @@ public class UserDao {
         return flag;
     }
 
-    public UserData login(String email, String password) {
-        UserData u = null;
+    public User login(String email, String password) {
+        User u = null;
 
         try {
             String sql = "select * from user_details where Email = ? and Password = ?";
@@ -44,7 +46,7 @@ public class UserDao {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                u = new UserData();
+                u = new User();
                 u.setId(rs.getInt(1));
                 u.setFull_Name(rs.getString(2));
                 u.setEmail(rs.getString(3));
@@ -109,7 +111,7 @@ public class UserDao {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                exists = rs.getInt(1) > 0;  // If count is greater than 0, email exists
+                exists = rs.getInt(1) > 0;
             }
         } catch (SQLException e) {
             e.printStackTrace();

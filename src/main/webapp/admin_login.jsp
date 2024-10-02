@@ -25,13 +25,18 @@
             <div class="card paint-card">
                 <div class="card-body">
                     <p class="fs-4 text-center">Admin Login</p>
-
-                    <form action="doctorLogin" method="post">
+                    <% String errorMessage = (String) request.getAttribute("errorMessage"); %>
+                    <% if (errorMessage != null) { %>
+                    <div class="alert alert-danger">
+                        <%= errorMessage %>
+                    </div>
+                    <% } %>
+                    <form action="./AdminLogin" method="post">
                         <div class="mb-3">
-                            <label class="form-label">Email address</label> <input required name="email" type="email" class="form-control">
+                            <label class="form-label">Email address</label> <input required name="Email" type="email" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Password</label> <input required name="password" type="password" class="form-control">
+                            <label class="form-label">Password</label> <input required name="Password" type="password" class="form-control">
                         </div>
                         <button type="submit" class="btn bg-success text-white col-md-12">Login</button>
                     </form>
@@ -42,6 +47,6 @@
     </div>
 </div>
 
-<%@include file="Component/footer.jsp"%>
+<%@include file="Component/footer.jsp" %>
 </body>
 </html>

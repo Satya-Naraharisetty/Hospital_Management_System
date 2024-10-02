@@ -1,5 +1,8 @@
-package com.hms;
+package com.hms.user;
 
+import com.hms.dao.UserDao;
+import com.hms.DBConnection;
+import com.hms.entity.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -17,7 +20,7 @@ public class Registration extends HttpServlet {
             String confirmPassword = request.getParameter("confirmPassword");
 
             // Handling existing users
-            UserData userData = new UserData(Full_Name, Role, Email, Password);
+            User userData = new User(Full_Name, Role, Email, Password);
             UserDao dao = new UserDao(DBConnection.getDBConnection());
             if (dao.isEmailExists(Email)) {
                 request.setAttribute("User already exists", "Email already exists, Please login or use a different account!"); // Set the error message

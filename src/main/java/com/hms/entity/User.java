@@ -1,17 +1,17 @@
-package com.hms;
+package com.hms.entity;
 
-public class UserData {
+public class User {
     private int Id;
     private String Full_Name;
     private String Role;
     private String Email;
     private String Password;
 
-    public UserData() {
+    public User() {
         super();
     }
 
-    public UserData(String full_Name, String role, String email, String password) {
+    public User(String full_Name, String role, String email, String password) {
         Full_Name = full_Name;
         Role = role;
         Email = email;
