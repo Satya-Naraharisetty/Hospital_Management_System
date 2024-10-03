@@ -5,7 +5,12 @@
   Time: 6:30 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@page import="com.hms"%>
+<%@ page import="com.hms.dao.DoctorDao" %>
+<%@ page import="com.hms.entity.Doctor" %>
+<%@ page import="com.hms.DBConnection" %>
+<%@ page import="com.hms.dao.SpecialistDao" %>
+<%@ page import="com.hms.entity.Specialist" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -39,7 +44,7 @@
 
                     <%
                         int id = Integer.parseInt(request.getParameter("id"));
-                        DoctorDao dao2 = new DoctorDao(DBConnect.getConn());
+                        DoctorDao dao2 = new DoctorDao(DBConnection.getDBConnection());
                         Doctor d = dao2.getDoctorById(id);
                     %>
 
@@ -48,7 +53,7 @@
                         <div class="mb-3">
                             <label class="form-label">Full Name</label> <input type="text"
                                                                                required name="fullname" class="form-control"
-                                                                               value="<%=d.getFullName()%>">
+                                                                               value="<%=d.getFull_Name()%>">
                         </div>
 
                         <div class="mb-3">
@@ -68,9 +73,9 @@
                             <option><%=d.getSpecialist()%></option>
 
                             <%
-                                SpecialistDao dao = new SpecialistDao(DBConnect.getConn());
-                                List<Specalist> list = dao.getAllSpecialist();
-                                for (Specalist s : list) {
+                                SpecialistDao dao = new SpecialistDao(DBConnection.getDBConnection());
+                                List<Specialist> list = dao.getAllSpecialist();
+                                for (Specialist s : list) {
                             %>
                             <option><%=s.getSpecialistName()%></option>
                             <%

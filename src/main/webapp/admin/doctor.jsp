@@ -9,6 +9,7 @@
 <%@page import="com.hms.*" %>
 <%@ page import="com.hms.dao.SpecialistDao" %>
 <%@ page import="com.hms.entity.Specialist" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -35,8 +36,8 @@
                         <p class="fs-3 text-center text-danger">${errorMsg}</p>
                         <c:remove var="errorMsg" scope="session"/>
                     </c:if>
-                    <c:if test="${not empty succMsg}">
-                        <div class="fs-3 text-center text-success" role="alert">${succMsg}</div>
+                    <c:if test="${not empty successMsg}">
+                        <div class="fs-3 text-center text-success" role="alert">${successMsg}</div>
                         <c:remove var="succMsg" scope="session"/>
                     </c:if>
                     <form action="./addDoctor" method="post">
@@ -62,7 +63,12 @@
                             <option>--select--</option>
 
                             <%
-                                SpecialistDao dao = new SpecialistDao(DBConnection.getDBConnection());
+                                SpecialistDao dao = null;
+                                try {
+                                    dao = new SpecialistDao(DBConnection.getDBConnection());
+                                } catch (SQLException e) {
+                                    throw new RuntimeException(e);
+                                }
                                 List<Specialist> list = dao.getAllSpecialist();
                                 for (Specialist s : list) {
                             %>
