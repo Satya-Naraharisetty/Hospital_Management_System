@@ -18,14 +18,14 @@ public class Appointment {
         super();
     }
 
-    public Appointment(int userId, String full_Name, String gender, String age, String appoint_date, String email, String phNo, String disease, int doctor_Id, String address, String status) {
+    public Appointment(int userId, String full_Name, String gender, String age, String appoint_date, String email, String PhNo, String disease, int doctor_Id, String address, String status) {
         this.UserId = userId;
         this.Full_Name = full_Name;
         this.Gender = gender;
         this.Age = age;
         this.appoint_date = appoint_date;
         this.Email = email;
-        this.PhNo = phNo;
+        this.PhNo = PhNo;
         this.Disease = disease;
         this.Doctor_Id = doctor_Id;
         this.Address = address;
@@ -37,7 +37,7 @@ public class Appointment {
     }
 
     public void setId(int id) {
-        Id = id;
+        this.Id = id;
     }
 
     public int getUserId() {
@@ -45,7 +45,7 @@ public class Appointment {
     }
 
     public void setUserId(int userId) {
-        UserId = userId;
+        this.UserId = userId;
     }
 
     public String getFull_Name() {
@@ -53,7 +53,7 @@ public class Appointment {
     }
 
     public void setFull_Name(String full_Name) {
-        Full_Name = full_Name;
+        this.Full_Name = full_Name;
     }
 
     public String getGender() {
@@ -61,7 +61,7 @@ public class Appointment {
     }
 
     public void setGender(String gender) {
-        Gender = gender;
+        this.Gender = gender;
     }
 
     public String getAge() {
@@ -69,7 +69,7 @@ public class Appointment {
     }
 
     public void setAge(String age) {
-        Age = age;
+        this.Age = age;
     }
 
     public String getAppoint_date() {
@@ -85,7 +85,7 @@ public class Appointment {
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.Email = email;
     }
 
     public String getPhNo() {
@@ -93,7 +93,7 @@ public class Appointment {
     }
 
     public void setPhNo(String phNo) {
-        PhNo = phNo;
+        this.PhNo = phNo;
     }
 
     public String getDisease() {
@@ -101,7 +101,7 @@ public class Appointment {
     }
 
     public void setDisease(String disease) {
-        Disease = disease;
+        this.Disease = disease;
     }
 
     public int getDoctor_Id() {
@@ -109,7 +109,7 @@ public class Appointment {
     }
 
     public void setDoctor_Id(int doctor_Id) {
-        Doctor_Id = doctor_Id;
+        this.Doctor_Id = doctor_Id;
     }
 
     public String getAddress() {
@@ -117,7 +117,7 @@ public class Appointment {
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.Address = address;
     }
 
     public String getStatus() {
@@ -125,6 +125,6 @@ public class Appointment {
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.Status = status;
     }
 }

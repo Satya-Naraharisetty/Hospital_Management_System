@@ -108,13 +108,13 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Diseases</label>
-                            <input required type="text" class="form-control" name="diseases">
+                            <label class="form-label">Disease</label>
+                            <input required type="text" class="form-control" name="Disease">
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Doctor</label>
-                            <select required class="form-control" name="doct">
+                            <select required class="form-control" name="doctor">
                                 <option value="">--select--</option>
                                 <%
                                     DoctorDao dao = new DoctorDao(DBConnection.getDBConnection());

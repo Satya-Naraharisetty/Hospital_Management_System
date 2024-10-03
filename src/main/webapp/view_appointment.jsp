@@ -13,13 +13,14 @@
 <%@page import="java.util.List"%>
 <%@page import="com.hms.DBConnection"%>
 <%@page import="com.hms.dao.AppointmentDao"%>
+<%@ page import="java.sql.SQLException" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="ISO-8859-1">
     <title>Appointment List</title>
     <%@include file="Component/allcss.jsp"%>
-    <style type="text/css">
+    <style>
         .paint-card {
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
         }
@@ -44,8 +45,18 @@
     }
 
     User user = (User) userObj;
-    AppointmentDao appointmentDao = new AppointmentDao(DBConnection.getDBConnection());
-    DoctorDao doctorDao = new DoctorDao(DBConnection.getDBConnection());
+    AppointmentDao appointmentDao;
+    try {
+        appointmentDao = new AppointmentDao(DBConnection.getDBConnection());
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+    DoctorDao doctorDao;
+    try {
+        doctorDao = new DoctorDao(DBConnection.getDBConnection());
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
     List<Appointment> appointmentList = appointmentDao.getAllAppointmentByLoginUser(user.getId());
 %>
 
@@ -67,7 +78,7 @@
                             <th scope="col">Gender</th>
                             <th scope="col">Age</th>
                             <th scope="col">Appoint Date</th>
-                            <th scope="col">Diseases</th>
+                            <th scope="col">Disease</th>
                             <th scope="col">Doctor Name</th>
                             <th scope="col">Status</th>
                         </tr>
@@ -107,7 +118,7 @@
             </div>
         </div>
         <div class="col-md-3 p-3">
-            <img alt="" src="img/doct.jpg">
+            <img alt="" src="images/img7.jpg">
         </div>
     </div>
 </div>
