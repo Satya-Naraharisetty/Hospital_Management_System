@@ -18,9 +18,9 @@
 
     // Fetch success and error messages from the session
     String errorMsg = (String) session.getAttribute("errorMsg");
-    String succMsg = (String) session.getAttribute("succMsg");
+    String succMsg = (String) session.getAttribute("successMsg");
     session.removeAttribute("errorMsg");
-    session.removeAttribute("succMsg");
+    session.removeAttribute("successMsg");
 
     // Check if user is logged in
     Object userObj = session.getAttribute("userObj");
@@ -75,7 +75,7 @@
                         <input type="hidden" name="userid" value="<%= userObj != null ? ((com.hms.entity.User)userObj).getId() : "" %>">
 
                         <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Full Name</label>
+                            <label class="form-label">Full Name</label>
                             <input required type="text" class="form-control" name="fullname">
                         </div>
 
@@ -88,32 +88,32 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Age</label>
+                            <label  class="form-label">Age</label>
                             <input required type="number" class="form-control" name="age">
                         </div>
 
                         <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Appointment Date</label>
+                            <label class="form-label">Appointment Date</label>
                             <input type="date" class="form-control" required name="appoint_date">
                         </div>
 
                         <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Email</label>
+                            <label class="form-label">Email</label>
                             <input required type="email" class="form-control" name="email">
                         </div>
 
                         <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Phone No</label>
+                            <label class="form-label">Phone No</label>
                             <input maxlength="10" required type="number" class="form-control" name="phno">
                         </div>
 
                         <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Diseases</label>
+                            <label class="form-label">Diseases</label>
                             <input required type="text" class="form-control" name="diseases">
                         </div>
 
                         <div class="col-md-6">
-                            <label for="inputPassword4" class="form-label">Doctor</label>
+                            <label class="form-label">Doctor</label>
                             <select required class="form-control" name="doct">
                                 <option value="">--select--</option>
                                 <%
